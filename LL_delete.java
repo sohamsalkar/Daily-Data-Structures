@@ -1,30 +1,6 @@
+//run java LinkedList || java LL_delete.java
 
-class Node {
-    private String data;
-    private Node next;
-
-    public Node(String data) {
-        this.data = data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public void setNext(Node node) {
-        this.next = node;
-    }
-
-    public String getData() {
-        return this.data;
-    }
-
-    public Node getNext() {
-        return this.next;
-    }
-}
-
-class LL_delete {
+class LinkedList {
 
     private Node head;
     private Node tail;
@@ -171,5 +147,30 @@ class LL_delete {
          * if(list.find("Munich")!=null) System.out.println("Node found"); else
          * System.out.println("Node not found");
          */
+    }
+}
+
+class Node {
+    private String data;
+    private Node next;
+
+    public Node(String data) {
+        this.data = data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public void setNext(Node node) {
+        this.next = node;
+    }
+
+    public String getData() {
+        return this.data;
+    }
+
+    public Node getNext() {
+        return this.next;
     }
 }
