@@ -1,3 +1,5 @@
+//import jdk.javadoc.internal.doclets.formats.html.markup.Head;
+
 class Node {
 
     private String data;
@@ -35,6 +37,14 @@ class LinkedList {
 
     public Node getTail() {
         return this.tail;
+    }
+
+    public void setHead(Node node) {
+        this.head = node;
+    }
+
+    public void setTail(Node node) {
+        this.tail = node;
     }
 
     public void addAtEnd(String data) {
@@ -140,16 +150,18 @@ class Tester {
 
     public static void main(String args[]) {
         LinkedList linkedList1 = new LinkedList();
-        linkedList1.addAtEnd("ABC");
-        linkedList1.addAtEnd("DFG");
-        linkedList1.addAtEnd("XYZ");
-        linkedList1.addAtEnd("EFG");
+        linkedList1.addAtEnd("10");
+        linkedList1.addAtEnd("20");
+        linkedList1.addAtEnd("30");
+        linkedList1.addAtEnd("40");
+        linkedList1.addAtEnd("50");
 
         LinkedList linkedList2 = new LinkedList();
-        linkedList2.addAtEnd("ABC");
-        linkedList2.addAtEnd("DFG");
-        linkedList2.addAtEnd("XYZ");
-        linkedList2.addAtEnd("EFG");
+        linkedList2.addAtEnd("10");
+        linkedList2.addAtEnd("20");
+        linkedList2.addAtEnd("30");
+        linkedList2.addAtEnd("40");
+        linkedList2.addAtEnd("50");
 
         System.out.println("Initial List");
         linkedList1.display();
@@ -167,17 +179,49 @@ class Tester {
     }
 
     public static void shiftListLeft(LinkedList linkedList, int n) {
-        for (int i = 0; i <= n; i++) {
-            Node node = new Node(linkedList.getTail().getData());
-            do {
-                node.setNext(linkedList.getHead());
-            } while (node.getNext().getNext() != null);
+        if (n == 0)
+            return;
+        Node temp = linkedList.getHead();
+        int len = 1;
+        while (temp.getNext() != null) {
+            len++;
+            temp = temp.getNext();
         }
+        Node current = linkedList.getHead();
+        int count = 1;
+        while (count < (len - n) && current != null) {
+            current = current.getNext();
+            count++;
+        }
+        if (current == null)
+            return;
+
+        Node nthNode = current;
+        while (current.getNext() != null)
+            current = current.getNext();
+        current.setNext(linkedList.getHead());
+        linkedList.setHead(nthNode.getNext());
+        nthNode.setNext(null);
 
     }
 
     public static void shiftListRight(LinkedList linkedList, int n) {
-        // Implement your code here
+        if (n == 0)
+            return;
+        Node current = linkedList.getHead();
+        int count = 1;
+        while (count < n && current != null) {
+            current = current.getNext();
+            count++;
+        }
+        if (current == null)
+            return;
 
+        Node nthNode = current;
+        while (current.getNext() != null)
+            current = current.getNext();
+        current.setNext(linkedList.getHead());
+        linkedList.setHead(nthNode.getNext());
+        nthNode.setNext(null);
     }
 }
