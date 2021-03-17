@@ -1,3 +1,7 @@
+import javax.xml.namespace.QName;
+
+//reverse a linkedlist
+
 class Node {
 
     private String data;
@@ -35,6 +39,14 @@ class LinkedList {
 
     public Node getTail() {
         return this.tail;
+    }
+
+    public void setHead(Node node) {
+        this.head = node;
+    }
+
+    public void setTail(Node node) {
+        this.tail = node;
     }
 
     public void addAtEnd(String data) {
@@ -143,10 +155,10 @@ class Tester {
         LinkedList linkedList = new LinkedList();
         LinkedList reversedLinkedList = new LinkedList();
 
-        linkedList.addAtEnd("Data");
-        linkedList.addAtEnd("Structures");
-        linkedList.addAtEnd("and");
-        linkedList.addAtEnd("Algorithms");
+        linkedList.addAtEnd("10");
+        linkedList.addAtEnd("20");
+        linkedList.addAtEnd("30");
+        linkedList.addAtEnd("40");
 
         System.out.println("Initial List");
         linkedList.display();
@@ -155,10 +167,20 @@ class Tester {
 
         reverseList(linkedList.getHead(), reversedLinkedList);
         System.out.println("Reversed List");
+
         reversedLinkedList.display();
     }
 
     public static void reverseList(Node head, LinkedList reversedLinkedList) {
-        // Implement your code here
+        Node prev = null;
+        Node current = head;
+        Node next = null;
+        while (current != null) {
+            next = current.getNext();
+            current.setNext(prev);
+            prev = current;
+            current = next;
+        }
+        reversedLinkedList.setHead(prev);
     }
 }
