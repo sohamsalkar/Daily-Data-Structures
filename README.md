@@ -2,4 +2,4 @@
 ---
 > various data Structure problems in JAVA.
 ---
-> problems from Hackerrank too
+> problems from Hackerrank solved in Java
