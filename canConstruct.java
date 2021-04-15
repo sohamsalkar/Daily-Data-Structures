@@ -29,7 +29,7 @@ public class canConstruct {
     public static void main(String[] args) {
 
         System.out.println(canwe("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeet", wor));
-        System.out.println(memo);
+        // System.out.println(memo);
     }
 
 }
