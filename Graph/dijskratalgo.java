@@ -1,10 +1,9 @@
-
 import java.util.Scanner;
 
 class Edge {
     int src;
     int dest;
-    int weight;
+    int weight
 
     public Edge() {
         src = dest = weight = 0;
@@ -30,7 +29,6 @@ class dijskratalgo {
         edge[i].src = source;
         edge[i].dest = destination;
         edge[i].weight = weight;
-
     }
 
     void dijskrata(int source) {
@@ -46,10 +44,8 @@ class dijskratalgo {
                 if (dist[u] != Long.MAX_VALUE && dist[u] + weight < dist[v]) {
                     dist[v] = dist[u] + weight;
                 }
-
             }
         }
-
     }
 
     public static void main(String[] args) {
