@@ -28,7 +28,6 @@ public class FaultyKeyboard {
         while (j < typed.length()) {
             if (typed.charAt(j) != name.charAt(i - 1))
                 return false;
-
             j++;
         }
 
