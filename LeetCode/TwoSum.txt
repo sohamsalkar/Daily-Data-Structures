@@ -1,0 +1,23 @@
+//https://leetcode.com/problems/two-sum/
+solved using dp 
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int ans[] = new int[2];
+        int dp[][] = new int[nums.length][nums.length];
+        for(int i = 0; i < nums.length ; i++)
+        {
+            
+            for(int j = i+1 ; j < nums.length ;j++ )
+            {
+                dp[i][j] = nums[i]+ nums[j];
+                if(dp[i][j] == target)
+                {
+                    ans[0]=i;
+                    ans[1]=j;
+                }
+            }
+        }
+        return ans;
+    }
+}
