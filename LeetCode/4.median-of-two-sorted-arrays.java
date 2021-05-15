@@ -1,3 +1,4 @@
+
 /*
  * @lc app=leetcode id=4 lang=java
  *
@@ -7,46 +8,42 @@
 // @lc code=start
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int i = 0, j = 0, k = 0;
-        int msize = nums1.length + nums2.length;
-        // System.out.println(msize);
-        int[] merged = new int[msize];
-        while (i < nums1.length && j < nums2.length) {
-            if (nums1[i] < nums2[j]) {
-                merged[k] = nums1[i];
-                k++;
-                i++;
+        if (nums1.length > nums2.length) {
+            return findMedianSortedArrays(nums2, nums1);
+        }
+
+        double ans = 0;
+        int x = nums1.length;
+        int y = nums2.length;
+
+        int low = 0;
+        int high = x;
+
+        while (low <= high) {
+            int pX = (low + high) / 2;
+            int pY = (x + y + 1) / 2 - pX;
+
+            int maxLeftX = (pX == 0) ? Integer.MIN_VALUE : nums1[pX - 1];
+            int minRightX = (pX == x) ? Integer.MAX_VALUE : nums1[pX];
+
+            int maxLeftY = (pY == 0) ? Integer.MIN_VALUE : nums2[pY - 1];
+            int minRightY = (pY == y) ? Integer.MAX_VALUE : nums2[pY];
+
+            if (maxLeftX <= minRightY && maxLeftY <= minRightX) {
+                if ((x + y) % 2 == 0) {
+                    ans = ((Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2.0);
+                    break;
+                } else {
+                    ans = (1.0 * Math.max(maxLeftX, maxLeftY));
+                    break;
+                }
+            } else if (maxLeftX > minRightY) {
+                high = pX - 1;
             } else {
-                merged[k] = nums2[j];
-                k++;
-                j++;
+                low = pX + 1;
             }
         }
-        while (i < nums1.length) {
-            merged[k] = nums1[i];
-            // System.out.println("1" + merged[k]);
-            k++;
-            i++;
-        }
-        while (j < nums2.length) {
-            merged[k] = nums2[j];
-            // System.out.println("2" + merged[k]);
-            k++;
-            j++;
-        }
-        double res;
-
-        if (msize == 2) {
-            res = merged[0] + merged[1];
-            res = res / 2.0;
-        } else if (msize % 2 == 0) {
-            res = merged[(msize / 2) - 1] + merged[(msize / 2)];
-            res = res / 2.0;
-        } else {
-            res = merged[msize / 2];
-        }
-
-        return res;
+        return ans;
     }
 }
 // @lc code=end
