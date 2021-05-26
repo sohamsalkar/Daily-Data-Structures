@@ -3,7 +3,7 @@ import java.util.Scanner;
 class Edge {
     int src;
     int dest;
-    int weight
+    int weight;
 
     public Edge() {
         src = dest = weight = 0;
