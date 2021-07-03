@@ -23,9 +23,7 @@ public class countConstruct {
     }
 
     static Map<String, Integer> memo = new HashMap<>();
-    // final static String[] wor = { "atebo", "ska", "boar", "rd", "sk", "a",
-    // "t","e", "board" };
-    final static String[] wor = { "a", "b", "c", "ab", "bc", "abc" };
+    final static String[] wor = { "a", "b", "c", "ab", "bc", "abc", "d", "cd" };
 
     public static void main(String[] args) {
 
