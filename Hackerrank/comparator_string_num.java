@@ -19,32 +19,9 @@ class Checker implements Comparator<Player> {
             return 1;
         else if (a.score > b.score)
             return -1;
-        else if (a.score == b.score) {
-            int l1 = a.name.length();
-            int l2 = b.name.length();
-            int lmin = Math.min(l1, l2);
-            int ret = 0;
-            for (int i = 0; i < lmin; i++) {
-                int flag = 1;
-                int str1_ch = (int) a.name.charAt(i);
-                int str2_ch = (int) b.name.charAt(i);
-                if (str1_ch != str2_ch) {
-                    ret = str1_ch - str2_ch;
-                    flag = 0;
-                    break;
-                }
-                if (flag == 1) {
-                    if (l1 > l2) {
-                        ret = 1;
-                    } else
-                        ret = -1;
-                }
-            }
-            if (ret < 0)
-                return -1;
-            else
-                return 1;
-        } else
+        else if (a.score == b.score)
+            return a.name.compareTo(b.name);
+        else
             return 0;
     }
 }

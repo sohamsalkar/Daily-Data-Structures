@@ -23,7 +23,6 @@ public class Solution {
                 {
                     bribe++;     
                     //System.out.println("br "+bribe+" qi "+q[i]+" qt "+q[t]);
-                         
                 }
             }
             if(bribe<3){

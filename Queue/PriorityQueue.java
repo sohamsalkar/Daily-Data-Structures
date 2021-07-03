@@ -33,19 +33,22 @@ class Student {
 class Priorities {
     List<Student> getStudents(List<String> events) {
         PriorityQueue<Student> sq;
-        sq = new PriorityQueue(Comparator.comparing(Student::getCGPA).reversed().thenComparing(Student::getName)
-                .thenComparing(Student::getID));
+        sq = new PriorityQueue(Comparator.comparing(Student::getCGPA).reversed().thenComparing(Student::getName).thenComparing(Student::getID));
+
         List<Student> students = new ArrayList<Student>();
+
         for (String s : events) {
             Scanner in = new Scanner(s);
             String event = in.next();
-            if (event.equals("ENTER")) {
+            if (event.equals("ENTER"))
+            {
                 String name = in.next();
                 float cgpa = in.nextFloat();
                 int id = in.nextInt();
                 Student student = new Student(id, name, cgpa);
                 sq.add(student);
-            } else if (event.equals("SERVED")) {
+            }
+            else if (event.equals("SERVED")) {
                 Student first = sq.poll();
             }
             in.close();
